@@ -83,6 +83,53 @@
   margin-bottom: 28px;
 }
 
+.courses-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.courses-search-wrapper {
+  flex: 1;
+}
+
+.courses-search-wrapper .search-bar-container {
+  margin-bottom: 0;
+}
+
+.courses-sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sort-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 0.92rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
 .search-bar-container {
   position: relative;
   width: 100%;
@@ -377,6 +424,21 @@
 
   .courses-no-results {
     padding: 40px 16px;
+  }
+
+  .courses-controls-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .courses-sort-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
   }
 }
 

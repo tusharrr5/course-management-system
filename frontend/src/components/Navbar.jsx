@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import '../navbar.css';
 
 /**
  * Navbar Component
@@ -19,12 +20,22 @@ export default function Navbar() {
     <header className="navbar-container">
       <nav className="navbar" aria-label="Main Navigation">
         <div className="navbar-left">
-          <Link to="/courses" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <span className="brand-icon">🎓</span>
             <span className="brand-title">Course Management System</span>
           </Link>
 
           <div className="navbar-links">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `nav-link ${isActive ? 'nav-link-active' : ''}`
+              }
+            >
+              Home
+            </NavLink>
+
             <NavLink
               to="/courses"
               className={({ isActive }) =>

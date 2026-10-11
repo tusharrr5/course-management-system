@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CoursesPage from './pages/CoursesPage';
@@ -22,8 +23,8 @@ function App() {
         <Navbar />
         <main className="main-content">
           <Routes>
-            {/* Default redirect to /courses */}
-            <Route path="/" element={<Navigate to="/courses" replace />} />
+            {/* Homepage */}
+            <Route path="/" element={<HomePage />} />
 
             {/* Public authentication routes */}
             <Route path="/login" element={<Login />} />
