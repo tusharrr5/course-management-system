@@ -111,7 +111,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
       {/* Title Field */}
       <div className="form-group">
         <label htmlFor="course-title">
-          Title <span className="required-star">*</span>
+          Title <span className="required-star" aria-hidden="true">*</span>
         </label>
         <input
           id="course-title"
@@ -122,6 +122,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           value={title}
           onChange={handleFieldChange(setTitle, 'title')}
           disabled={isSubmitting}
+          aria-invalid={errors.title ? 'true' : 'false'}
         />
         {errors.title && <span className="error-message">{errors.title}</span>}
       </div>
@@ -129,7 +130,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
       {/* Description Field */}
       <div className="form-group">
         <label htmlFor="course-description">
-          Description <span className="required-star">*</span>
+          Description <span className="required-star" aria-hidden="true">*</span>
         </label>
         <textarea
           id="course-description"
@@ -140,6 +141,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           value={description}
           onChange={handleFieldChange(setDescription, 'description')}
           disabled={isSubmitting}
+          aria-invalid={errors.description ? 'true' : 'false'}
         />
         {errors.description && <span className="error-message">{errors.description}</span>}
       </div>
@@ -147,7 +149,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
       {/* Instructor Field */}
       <div className="form-group">
         <label htmlFor="course-instructor">
-          Instructor <span className="required-star">*</span>
+          Instructor <span className="required-star" aria-hidden="true">*</span>
         </label>
         <input
           id="course-instructor"
@@ -158,6 +160,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           value={instructor}
           onChange={handleFieldChange(setInstructor, 'instructor')}
           disabled={isSubmitting}
+          aria-invalid={errors.instructor ? 'true' : 'false'}
         />
         {errors.instructor && <span className="error-message">{errors.instructor}</span>}
       </div>
@@ -165,7 +168,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
       {/* Duration Field */}
       <div className="form-group">
         <label htmlFor="course-duration">
-          Duration <span className="required-star">*</span>
+          Duration <span className="required-star" aria-hidden="true">*</span>
         </label>
         <input
           id="course-duration"
@@ -176,6 +179,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           value={duration}
           onChange={handleFieldChange(setDuration, 'duration')}
           disabled={isSubmitting}
+          aria-invalid={errors.duration ? 'true' : 'false'}
         />
         {errors.duration && <span className="error-message">{errors.duration}</span>}
       </div>
@@ -183,7 +187,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
       {/* Price Field */}
       <div className="form-group">
         <label htmlFor="course-price">
-          Price (₹ / $) <span className="required-star">*</span>
+          Price (₹ / $) <span className="required-star" aria-hidden="true">*</span>
         </label>
         <input
           id="course-price"
@@ -195,6 +199,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           value={price}
           onChange={handleFieldChange(setPrice, 'price')}
           disabled={isSubmitting}
+          aria-invalid={errors.price ? 'true' : 'false'}
         />
         {errors.price && <span className="error-message">{errors.price}</span>}
       </div>
@@ -214,7 +219,7 @@ function CourseForm({ initialCourse, onSubmit, onCancel, isSubmitting = false, s
           className="btn btn-submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Saving...' : isEditMode ? 'Update Course' : 'Add Course'}
+          {isSubmitting ? 'Saving...' : isEditMode ? 'Save Changes' : 'Add Course'}
         </button>
       </div>
     </form>
