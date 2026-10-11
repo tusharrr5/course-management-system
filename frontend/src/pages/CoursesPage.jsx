@@ -52,6 +52,7 @@ const SAMPLE_COURSES = [
 export default function CoursesPage() {
   const [courses, setCourses] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('default');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isUsingSampleData, setIsUsingSampleData] = useState(false);
@@ -116,6 +117,17 @@ export default function CoursesPage() {
     return title.includes(trimmedSearch) || instructor.includes(trimmedSearch);
   });
 
+  // Price sorting: ascending, descending, or default
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (sortBy === 'price-asc') {
+      return (Number(a.price) || 0) - (Number(b.price) || 0);
+    }
+    if (sortBy === 'price-desc') {
+      return (Number(b.price) || 0) - (Number(a.price) || 0);
+    }
+    return 0;
+  });
+
   return (
     <div className="courses-page-container">
       {/* Header section */}
@@ -169,19 +181,37 @@ export default function CoursesPage() {
         </div>
       ) : (
         <>
-          {/* Search section with matching count */}
+          {/* Search and Sort section */}
           <div className="courses-search-section">
-            <SearchBar
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <div className="courses-controls-row">
+              <div className="courses-search-wrapper">
+                <SearchBar
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+              <div className="courses-sort-wrapper">
+                <label htmlFor="sort-select" className="sort-label">Sort by Price:</label>
+                <select
+                  id="sort-select"
+                  className="sort-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  aria-label="Sort courses by price"
+                >
+                  <option value="default">Default</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
             <p className="courses-count">
-              Showing {filteredCourses.length} of {courses.length} {courses.length === 1 ? 'course' : 'courses'}
+              Showing {sortedCourses.length} of {courses.length} {courses.length === 1 ? 'course' : 'courses'}
             </p>
           </div>
 
           {/* If search query has no matches, show specific no-match message */}
-          {filteredCourses.length === 0 ? (
+          {sortedCourses.length === 0 ? (
             <div className="courses-no-results">
               <span className="empty-icon">🔍</span>
               <h3>No courses match your search</h3>
@@ -190,7 +220,7 @@ export default function CoursesPage() {
           ) : (
             /* Responsive Courses Grid */
             <div className="courses-grid">
-              {filteredCourses.map((course) => (
+              {sortedCourses.map((course) => (
                 <CourseCard key={course._id || course.id} course={course} />
               ))}
             </div>
