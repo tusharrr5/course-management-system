@@ -1,45 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CoursesPage from './pages/CoursesPage';
 import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminDashboard from './pages/AdminDashboard';
 import './auth.css';
 import './App.css';
-
-/**
- * Temporary Route Placeholder: Admin Dashboard Page
- * Preserves the route contract for Naman, whose PR #10 contains the full Admin Dashboard & Course Forms.
- * Protected by AdminRoute to verify Role-Based Access Control.
- */
-function AdminDashboardPlaceholder() {
-  const { user } = useAuth();
-
-  return (
-    <div className="placeholder-container">
-      <div className="placeholder-card">
-        <h2>⚙️ Admin Dashboard</h2>
-        <p className="placeholder-note">
-          Notice: Naman's PR #10 contains the full Admin Dashboard & Course Forms.
-        </p>
-        <p>
-          🎉 <strong>Role-Based Access Control Verified!</strong> You are authenticated as an{' '}
-          <span className="badge badge-admin">{user?.role}</span> ({user?.name || user?.email}).
-        </p>
-        <p style={{ marginTop: '16px' }}>
-          Normal users cannot access this area (HTTP 403 Forbidden).
-        </p>
-        <div className="action-buttons">
-          <Link to="/courses" className="btn btn-outline">
-            &larr; Back to Courses
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /**
  * Main Application Component
@@ -59,7 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* Course catalog route */}
+            {/* Course catalog route (Divyansh) */}
             <Route path="/courses" element={<CoursesPage />} />
 
             {/* Protected Student Route using ProtectedRoute */}
@@ -82,12 +51,12 @@ function App() {
               }
             />
 
-            {/* Protected Admin Route (Naman's PR #10 placeholder) */}
+            {/* Protected Admin Route with AdminDashboard (Naman) */}
             <Route
               path="/admin"
               element={
                 <AdminRoute>
-                  <AdminDashboardPlaceholder />
+                  <AdminDashboard />
                 </AdminRoute>
               }
             />
