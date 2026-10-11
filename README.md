@@ -20,7 +20,7 @@ A modern, full-stack Course Management System built with the **MERN** stack (Mon
 - [Production Deployment Guide](#production-deployment-guide)
   - [Backend Deployment (Render)](#backend-deployment-render)
   - [Frontend Deployment (Vercel)](#frontend-deployment-vercel)
-- [Deployment Links & Screenshots](#deployment-links--screenshots)
+- [Live Deployment](#live-deployment)
 
 ---
 
@@ -373,40 +373,14 @@ npm run build
 
 ---
 
-## Deployment Links & Screenshots
+## Live Deployment
 
-### Live URLs
 - **Frontend (Vercel):** https://course-management-system-jade-pi.vercel.app
-- **Backend API (Render):** https://course-management-system-ysac.onrender.com/api/health
-- **GitHub Repository:** https://github.com/tusharrr5/course-management-system
+- **Backend API health check (Render):** https://course-management-system-ysac.onrender.com/api/health
+- **Course API:** https://course-management-system-ysac.onrender.com/api/courses
+- **GitHub repository:** https://github.com/tusharrr5/course-management-system
 
----
-
-### Application Screenshots
-
-#### 1. Course Catalog & Search
-> *Interactive course browsing with instant real-time search.*
-```markdown
-![Course Catalog](https://raw.githubusercontent.com/tusharrr5/course-management-system/main/docs/screenshots/courses-catalog.png)
-```
-
-#### 2. Course Details View
-> *Detailed course information and tuition fee metadata.*
-```markdown
-![Course Details](https://raw.githubusercontent.com/tusharrr5/course-management-system/main/docs/screenshots/course-details.png)
-```
-
-#### 3. User Authentication
-> *Secure student registration and JWT login interface.*
-```markdown
-![Login Page](https://raw.githubusercontent.com/tusharrr5/course-management-system/main/docs/screenshots/login.png)
-```
-
-#### 4. Admin Management Dashboard
-> *Administrative course management interface for adding, updating, and removing courses.*
-```markdown
-![Admin Dashboard](https://raw.githubusercontent.com/tusharrr5/course-management-system/main/docs/screenshots/admin-dashboard.png)
-```
+Screenshots are not included in this submission.
 
 ---
 
