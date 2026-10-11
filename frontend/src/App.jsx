@@ -41,8 +41,8 @@ function App() {
                 <ProtectedRoute>
                   <div className="placeholder-container">
                     <div className="placeholder-card">
-                      <h2>🎓 My Enrolled Courses</h2>
-                      <p>Authenticated student portal. Welcome to your learning space!</p>
+                      <h2>🎓 Student Portal</h2>
+                      <p>Authenticated student portal. Browse the course catalog below.</p>
                       <div className="action-buttons">
                         <Link to="/courses" className="btn btn-outline">
                           Browse Courses

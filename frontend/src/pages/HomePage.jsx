@@ -71,7 +71,7 @@ export default function HomePage() {
         <p className="hero-description">
           Explore structured computer science courses and practical curriculum modules.
           <br />
-          Browse available course offerings, review outlines, and track your learning journey.
+          Browse available course offerings, review instructor details, and plan your academic schedule.
         </p>
         <div className="hero-actions">
           <Link to="/courses" className="btn btn-primary btn-hero">
@@ -93,14 +93,14 @@ export default function HomePage() {
           <span className="highlight-icon">📖</span>
           <h3 className="highlight-title">Course Outlines</h3>
           <p className="highlight-text">
-            Review detailed course descriptions, expected durations, and tuition fees before enrolling.
+            Review detailed course descriptions, expected durations, and tuition fees across the catalog.
           </p>
         </div>
         <div className="highlight-card">
           <span className="highlight-icon">⏱️</span>
-          <h3 className="highlight-title">Flexible Learning</h3>
+          <h3 className="highlight-title">Clear Timelines</h3>
           <p className="highlight-text">
-            Structured week-by-week timelines designed to balance coursework and practical coding.
+            Transparent course durations and instructor information to help guide your course selection.
           </p>
         </div>
       </section>
