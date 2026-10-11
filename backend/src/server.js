@@ -19,8 +19,40 @@ const PORT = process.env.PORT || 5001;
 // ==========================================
 // 2. GLOBAL MIDDLEWARE
 // ==========================================
-// Enable Cross-Origin Resource Sharing so frontend can communicate with backend
-app.use(cors());
+// Enable Cross-Origin Resource Sharing (CORS)
+// Allows requests from local Vite frontend and deployed production frontend (FRONTEND_URL)
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+];
+
+if (process.env.FRONTEND_URL) {
+    const customOrigins = process.env.FRONTEND_URL.split(",")
+        .map((origin) => origin.trim().replace(/\/$/, ""))
+        .filter(Boolean);
+    customOrigins.forEach((origin) => {
+        if (!allowedOrigins.includes(origin)) {
+            allowedOrigins.push(origin);
+        }
+    });
+}
+
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            // Allow requests with no origin (e.g., mobile apps, curl, server-to-server, Node test runners)
+            if (!origin) return callback(null, true);
+            const normalized = origin.replace(/\/$/, "");
+            if (allowedOrigins.includes(normalized) || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+            return callback(null, false);
+        },
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"]
+    })
+);
 
 // Parse incoming requests with JSON payloads (replaces bodyParser.json)
 app.use(express.json());

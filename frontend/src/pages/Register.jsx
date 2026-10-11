@@ -67,7 +67,7 @@ export default function Register() {
           <div className="auth-icon" aria-hidden="true">📝</div>
           <h2>Create Your Account</h2>
           <p className="auth-subtitle">
-            Sign up to access course enrollments and learning materials.
+            Sign up to browse our full course catalog and view course details.
           </p>
         </div>
 
