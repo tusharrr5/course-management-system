@@ -7,6 +7,7 @@ A modern, full-stack Course Management System built with the **MERN** stack (Mon
 ## Table of Contents
 
 - [Overview](#overview)
+- [Live Deployment](#live-deployment)
 - [Assignment Requirements Verification](#assignment-requirements-verification)
 - [Key Features](#key-features)
 - [Tech Stack](#tech-stack)
@@ -26,6 +27,19 @@ A modern, full-stack Course Management System built with the **MERN** stack (Mon
 ## Overview
 
 The **Course Management System** enables educational institutions and instructors to publish course materials while offering students an intuitive catalog to discover and review courses. Built with enterprise-level security practices, it features bcrypt password hashing, stateless JSON Web Token (JWT) authentication, and granular role-based authorization for administrative operations.
+
+---
+
+## Live Deployment
+
+Frontend:
+https://course-management-system-jade-pi.vercel.app
+
+Backend:
+https://course-management-system-ysac.onrender.com
+
+GitHub:
+https://github.com/tusharrr5/course-management-system
 
 ---
 
@@ -329,8 +343,8 @@ npm run build
    - `PORT`: `5001` (or leave default assigned by Render)
    - `MONGO_URI`: `your_mongodb_atlas_connection_string`
    - `JWT_SECRET`: `your_production_jwt_secret`
-   - `FRONTEND_URL`: `https://your-frontend.vercel.app` *(update once frontend is deployed)*
-5. **Deploy:** Click **Create Web Service**. After deployment, note the public URL (e.g. `https://course-management-backend.onrender.com`).
+   - `FRONTEND_URL`: `https://course-management-system-jade-pi.vercel.app`
+5. **Deploy:** Click **Create Web Service**. After deployment, note the public URL (`https://course-management-system-ysac.onrender.com`).
 
 ---
 
@@ -344,7 +358,7 @@ npm run build
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
 4. **Environment Variables:**
-   - `VITE_API_URL`: `https://course-management-backend.onrender.com/api`
+   - `VITE_API_URL`: `https://course-management-system-ysac.onrender.com/api`
 5. **SPA Routing Configuration:**
    The `frontend/vercel.json` file ensures that all routes (`/login`, `/register`, `/courses`, `/courses/:id`, `/admin`) are served via `/index.html` on direct reload:
    ```json
@@ -355,17 +369,16 @@ npm run build
    }
    ```
 6. **Deploy:** Click **Deploy**. Vercel will build and host the application.
-7. **Cross-Link Origins:** Copy your Vercel deployment URL (e.g. `https://your-frontend.vercel.app`) and paste it as `FRONTEND_URL` in your Render backend environment variables.
+7. **Cross-Link Origins:** Copy your Vercel deployment URL (`https://course-management-system-jade-pi.vercel.app`) and paste it as `FRONTEND_URL` in your Render backend environment variables.
 
 ---
 
 ## Deployment Links & Screenshots
 
-> *Replace the placeholder URLs and images below with your live production links upon deployment.*
-
 ### Live URLs
-- **Frontend (Vercel):** [https://your-frontend.vercel.app](https://your-frontend.vercel.app)
-- **Backend API (Render):** [https://your-backend.onrender.com/api/health](https://your-backend.onrender.com/api/health)
+- **Frontend (Vercel):** https://course-management-system-jade-pi.vercel.app
+- **Backend API (Render):** https://course-management-system-ysac.onrender.com/api/health
+- **GitHub Repository:** https://github.com/tusharrr5/course-management-system
 
 ---
 
