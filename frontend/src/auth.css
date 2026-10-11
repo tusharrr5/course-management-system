@@ -450,47 +450,6 @@
 }
 
 /* Responsive Media Queries */
-@media (max-width: 640px) {
-  .navbar {
-    padding: 10px 14px;
-    gap: 10px;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .navbar-left {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 8px;
-  }
-
-  .navbar-right {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-  }
-
-  .brand-title {
-    font-size: 0.92rem;
-  }
-
-  .navbar-brand {
-    font-size: 0.95rem;
-    gap: 6px;
-  }
-
-  .navbar-links {
-    gap: 8px;
-  }
-
-  .user-greeting {
-    display: none;
-  }
-}
-
 @media (max-width: 480px) {
   .auth-container,
   .auth-page-container {
@@ -511,3 +470,4 @@
     font-size: 0.85rem;
   }
 }
+
