@@ -171,6 +171,38 @@
   color: var(--text);
 }
 
+.home-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.home-error-state .error-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.home-error-state h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: var(--text-h);
+}
+
+.home-error-state p {
+  color: var(--text);
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .home-container {

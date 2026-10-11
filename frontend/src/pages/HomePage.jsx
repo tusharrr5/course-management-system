@@ -6,36 +6,6 @@ import { useAuth } from '../context/AuthContext';
 import '../home.css';
 
 /**
- * Fallback preview courses used only when backend server is offline.
- */
-const FALLBACK_FEATURED = [
-  {
-    _id: 'sample-1',
-    title: 'Full-Stack Web Development with MERN',
-    description: 'Learn MongoDB, Express, React, and Node.js from scratch to build modern full-stack web applications with authentication and REST APIs.',
-    instructor: 'Dr. Angela Yu',
-    duration: '12 Weeks',
-    price: 4999
-  },
-  {
-    _id: 'sample-2',
-    title: 'Data Structures & Algorithms Mastery',
-    description: 'Comprehensive guide to mastering problem solving, trees, graphs, dynamic programming, and recursion in modern programming languages.',
-    instructor: 'Prof. Abdul Bari',
-    duration: '10 Weeks',
-    price: 3499
-  },
-  {
-    _id: 'sample-3',
-    title: 'Python for Data Science & Machine Learning',
-    description: 'Master NumPy, Pandas, Matplotlib, Scikit-Learn, and build real-world machine learning predictive models and neural networks.',
-    instructor: 'Jose Portilla',
-    duration: '8 Weeks',
-    price: 2999
-  }
-];
-
-/**
  * HomePage Component
  * Welcoming landing page introducing the Course Management System,
  * with a quick link to browse the full catalog and featured course highlights.
@@ -43,6 +13,8 @@ const FALLBACK_FEATURED = [
 export default function HomePage() {
   const [featuredCourses, setFeaturedCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const { API_BASE_URL } = useAuth();
 
@@ -63,11 +35,15 @@ export default function HomePage() {
 
         // Display up to 3 featured courses from the existing database
         setFeaturedCourses(courseList.slice(0, 3));
+        setError('');
       })
       .catch((err) => {
         if (!isMounted) return;
-        console.warn('Backend unavailable on HomePage, showing fallback preview courses:', err.message);
-        setFeaturedCourses(FALLBACK_FEATURED);
+        const errorMsg =
+          err.response?.data?.message || err.message || 'Unable to connect to the backend server.';
+        console.warn('Backend unavailable on HomePage:', errorMsg);
+        setError(errorMsg);
+        setFeaturedCourses([]);
       })
       .finally(() => {
         if (isMounted) {
@@ -78,7 +54,13 @@ export default function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, [API_BASE_URL]);
+  }, [API_BASE_URL, refreshTrigger]);
+
+  const handleRetry = () => {
+    setLoading(true);
+    setError('');
+    setRefreshTrigger((prev) => prev + 1);
+  };
 
   return (
     <div className="home-container">
@@ -87,9 +69,9 @@ export default function HomePage() {
         <span className="hero-tag">🎓 College Learning Portal</span>
         <h1 className="hero-title">Welcome to Course Management System</h1>
         <p className="hero-description">
-          Explore industry-focused computer science courses taught by experienced mentors.
+          Explore structured computer science courses and practical curriculum modules.
           <br />
-          Build hands-on projects, master modern technologies, and accelerate your career.
+          Browse available course offerings, review outlines, and track your learning journey.
         </p>
         <div className="hero-actions">
           <Link to="/courses" className="btn btn-primary btn-hero">
@@ -98,7 +80,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Educational Platform Highlights (No invented statistics) */}
+      {/* Educational Platform Highlights */}
       <section className="highlights-section">
         <div className="highlight-card">
           <span className="highlight-icon">💻</span>
@@ -108,10 +90,10 @@ export default function HomePage() {
           </p>
         </div>
         <div className="highlight-card">
-          <span className="highlight-icon">👨‍🏫</span>
-          <h3 className="highlight-title">Expert Instructors</h3>
+          <span className="highlight-icon">📖</span>
+          <h3 className="highlight-title">Course Outlines</h3>
           <p className="highlight-text">
-            Gain insights and mentorship from qualified educators committed to student growth.
+            Review detailed course descriptions, expected durations, and tuition fees before enrolling.
           </p>
         </div>
         <div className="highlight-card">
@@ -129,7 +111,7 @@ export default function HomePage() {
           <div>
             <h2 className="featured-title">Featured Courses</h2>
             <p className="featured-subtitle">
-              Hand-picked courses from our catalog to get you started.
+              A preview of the first courses available in our catalog.
             </p>
           </div>
           <Link to="/courses" className="view-all-link">
@@ -141,6 +123,21 @@ export default function HomePage() {
           <div className="home-loading-state">
             <div className="spinner"></div>
             <p>Loading featured courses...</p>
+          </div>
+        ) : error ? (
+          <div className="home-error-state" role="alert">
+            <span className="error-icon">⚠️</span>
+            <h3>Unable to Load Featured Courses</h3>
+            <p>
+              Could not connect to the backend server ({error}). Please make sure the API server is running.
+            </p>
+            <button
+              type="button"
+              onClick={handleRetry}
+              className="btn btn-primary btn-sm"
+            >
+              🔄 Retry Connection
+            </button>
           </div>
         ) : featuredCourses.length > 0 ? (
           <div className="featured-grid">
