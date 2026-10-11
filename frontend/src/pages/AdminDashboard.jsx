@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import CourseForm from '../components/CourseForm';
+import '../admin.css';
 
 /**
  * AdminDashboard Component
@@ -309,17 +310,17 @@ function AdminDashboard() {
   return (
     <div className="admin-dashboard">
       {/* Header section */}
-      <header className="dashboard-header">
-        <div className="header-info">
-          <h1>Admin Course Management</h1>
-          <p className="dashboard-description">
+      <header className="admin-header dashboard-header">
+        <div className="admin-header-info header-info">
+          <h1>Admin Dashboard</h1>
+          <p className="admin-header-description dashboard-description">
             Manage course catalog, update curriculum details, and track offerings.
           </p>
         </div>
-        <div className="header-actions">
+        <div className="admin-header-actions header-actions">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary btn-add-course"
             onClick={handleOpenAddModal}
           >
             + Add New Course
@@ -477,7 +478,7 @@ function AdminDashboard() {
       {courseToDelete && (
         <div className="modal-overlay" onClick={handleCloseDeleteModal}>
           <div
-            className="modal-container delete-confirm-modal"
+            className="modal-container delete-modal delete-confirm-modal"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"

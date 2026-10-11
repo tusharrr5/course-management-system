@@ -61,10 +61,10 @@ export default function Register() {
   };
 
   return (
-    <div className="auth-page-container">
+    <div className="auth-container auth-page-container">
       <div className="auth-card">
-        <div className="auth-card-header">
-          <div className="auth-icon">📝</div>
+        <div className="auth-header auth-card-header">
+          <div className="auth-icon" aria-hidden="true">📝</div>
           <h2>Create Your Account</h2>
           <p className="auth-subtitle">
             Sign up to access course enrollments and learning materials.
@@ -72,8 +72,8 @@ export default function Register() {
         </div>
 
         {error && (
-          <div className="alert alert-danger" role="alert" id="register-error-alert">
-            <span className="alert-icon">⚠️</span>
+          <div className="auth-error alert alert-danger" role="alert" id="register-error-alert">
+            <span className="alert-icon" aria-hidden="true">⚠️</span>
             <span>{error}</span>
           </div>
         )}
@@ -142,7 +142,7 @@ export default function Register() {
           </button>
         </form>
 
-        <div className="auth-card-footer">
+        <div className="auth-footer auth-card-footer">
           <p>
             Already registered?{' '}
             <Link to="/login" className="auth-link">

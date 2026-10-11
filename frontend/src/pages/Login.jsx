@@ -50,10 +50,10 @@ export default function Login() {
   };
 
   return (
-    <div className="auth-page-container">
+    <div className="auth-container auth-page-container">
       <div className="auth-card">
-        <div className="auth-card-header">
-          <div className="auth-icon">🔐</div>
+        <div className="auth-header auth-card-header">
+          <div className="auth-icon" aria-hidden="true">🔐</div>
           <h2>Sign In to Your Account</h2>
           <p className="auth-subtitle">
             Enter your credentials to access the Course Management System.
@@ -61,8 +61,8 @@ export default function Login() {
         </div>
 
         {error && (
-          <div className="alert alert-danger" role="alert" id="login-error-alert">
-            <span className="alert-icon">⚠️</span>
+          <div className="auth-error alert alert-danger" role="alert" id="login-error-alert">
+            <span className="alert-icon" aria-hidden="true">⚠️</span>
             <span>{error}</span>
           </div>
         )}
@@ -108,7 +108,7 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="auth-card-footer">
+        <div className="auth-footer auth-card-footer">
           <p>
             Don't have an account yet?{' '}
             <Link to="/register" className="auth-link">
