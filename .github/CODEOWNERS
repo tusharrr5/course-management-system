@@ -1,0 +1,5 @@
+# The team leader must review changes across the project.
+* @tusharrr5
+
+# Ensure changes to this review policy also require the TL.
+/.github/CODEOWNERS @tusharrr5
